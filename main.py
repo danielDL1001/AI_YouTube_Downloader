@@ -521,7 +521,6 @@ class YouTubeDownloaderApp:
             messagebox.showerror("Erro", "Cole um link do YouTube")
             return
         Config.diagnosis()
-        Config.sync_archive(self.log)
         self.button_download.configure(state="disabled")
         self.log("Iniciando download...")
         self.show_progress()
