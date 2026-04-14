@@ -9,11 +9,9 @@ def get_base_options(progresso_hook, status):
 
         # logs
         'ignoreerrors': True,
-        'raise_if_error': False,
-        'skip_unavailable_fragments': True,
+        # 'raise_if_error': False,
         'quiet': True,
         'verbose': True,
-        'nocheckcertificate': True,
         'no_warnings': True,
 
         # rede / estabilidade
@@ -23,6 +21,16 @@ def get_base_options(progresso_hook, status):
         'fragment_retries': 10,
         'skip_unavailable_fragments': True,
         'nocheckcertificate': True,
+
+        # Velocidade min de 10mbps (10MB/s)
+        'concurrent_fragment_downloads': 8,
+        'http_chunk_size': 10485760,
+
+        # Boost Real
+        'external_downloader': 'aria2c',
+        'external_downloader_args': {
+            'aria2c': ['-x', '16', '-j', '16', '-k', '1M']
+        },
 
         # opções avançadas do nodeJS (para vídeos com player complexo)
         'js_runtimes': {
