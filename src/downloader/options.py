@@ -1,7 +1,7 @@
 import os
 from src.paths import COOKIE_PATH, PASTA_MP3, PASTA_MP4
 
-def get_base_options(progresso_hook, status):
+def get_base_options(progresso_hook, status):   
     # Configurações download
     ydl_opts = {
         # progress
@@ -28,9 +28,12 @@ def get_base_options(progresso_hook, status):
 
         # Boost Real
         'external_downloader': 'aria2c',
-        'external_downloader_args': {
-            'aria2c': ['-x', '16', '-j', '16', '-k', '1M']
-        },
+        'external_downloader_args': [
+            '-x', '16',   # Conexões
+            '-j', '16',   # Downloads simultâneos
+            '-k', '1M'    # Chunk size
+        ],
+
 
         # opções avançadas do nodeJS (para vídeos com player complexo)
         'js_runtimes': {
