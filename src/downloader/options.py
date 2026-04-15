@@ -1,5 +1,8 @@
 import os
+import ssl
 from src.paths import COOKIE_PATH, PASTA_MP3, PASTA_MP4
+
+ssl._create_default_https_context = ssl._create_unverified_context
 
 def get_base_options(progresso_hook, status):   
     # Configurações download
@@ -9,7 +12,7 @@ def get_base_options(progresso_hook, status):
 
         # logs
         'ignoreerrors': True,
-        # 'raise_if_error': False,
+        'raise_if_error': False,
         'quiet': True,
         'verbose': True,
         'no_warnings': True,
@@ -20,6 +23,7 @@ def get_base_options(progresso_hook, status):
         'retries': 10,
         'fragment_retries': 10,
         'skip_unavailable_fragments': True,
+        'compat_opts': ['no-modern-tls'],
         'nocheckcertificate': True,
 
         # Velocidade min de 10mbps (10MB/s)
@@ -27,11 +31,10 @@ def get_base_options(progresso_hook, status):
         'http_chunk_size': 10485760,
 
         # Boost Real
-        'external_downloader': 'aria2c',
         'external_downloader_args': [
-            '-x', '16',   # Conexões
-            '-j', '16',   # Downloads simultâneos
-            '-k', '1M'    # Chunk size
+            '-x', '4',
+            '-j', '4',
+            '-k', '1M'
         ],
 
 
