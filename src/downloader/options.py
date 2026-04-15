@@ -37,7 +37,6 @@ def get_base_options(progresso_hook, status):
             '-k', '1M'
         ],
 
-
         # opções avançadas do nodeJS (para vídeos com player complexo)
         'js_runtimes': {
         'node': {
