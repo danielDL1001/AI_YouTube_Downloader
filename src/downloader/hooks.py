@@ -20,9 +20,10 @@ def create_progress_hook(progress, total_ref):
                 speed_text = "Calculando..."
 
             if eta:
+                hour = eta // 3600
                 mins = eta // 60
                 secs = eta % 60
-                eta_text = f"{mins:02d}:{secs:02d}"
+                eta_text = f"{hour:02d}:{mins:02d}:{secs:02d}"
             else:
                 eta_text = "--:--"
 
