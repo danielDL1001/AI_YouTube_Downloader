@@ -1,0 +1,2 @@
+- Quantidade total de tempo do download no log
+- Botão de ativar/desativar o Pular download
