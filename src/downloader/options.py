@@ -84,16 +84,22 @@ def get_video_options(ydl_opts):
     })
     return ydl_opts
 
-# Opções para baixar apenas o audio
-def get_audio_options(ydl_opts):
+# Opções para baixar apenas o audio (mp3 ou aac)
+def get_audio_options(ydl_opts, codec='mp3'):
     ydl_opts.update({
-        'download_archive': 'downloaded_audio.txt',
+        'download_archive': f'downloaded_audio_{codec}.txt',
         'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
+        'postprocessors': [
+            {
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': codec,
+                'preferredquality': '192',
+            },
+            {
+                'key': 'FFmpegMetadata',
+                'add_metadata': True,
+            },
+        ],
         'outtmpl': os.path.join(
             PASTA_MP3,
             '%(playlist_title|single)s',

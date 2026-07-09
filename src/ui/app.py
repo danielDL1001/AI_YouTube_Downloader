@@ -140,18 +140,19 @@ class YouTubeDownloaderApp:
             self.theme = "light"
 
     def reload(self):
-        if self.formato.get() == 1:
+        # Organizar músicas só faz sentido para MP3 (opção 2)
+        if self.formato.get() == 2:
+            self.organize_locked = False
+            self.checkbox_organize.configure(
+                state="normal",
+                text_color=Theme.text_color
+            )
+        else:
             self.organizar_bool.set(False)
             self.organize_locked = True
             self.checkbox_organize.configure(
                 state="disabled",
                 text_color=("gray60", "gray30")
-            )
-        else:
-            self.organize_locked = False
-            self.checkbox_organize.configure(
-                state="normal",
-                text_color=Theme.text_color
             )
 
     def block(self):
@@ -180,6 +181,16 @@ class YouTubeDownloaderApp:
             command=self.reload
         )
         self.audio.pack(pady=10)
+
+        self.audio_aac = ctk.CTkRadioButton(
+            self.frame_main,
+            text="Áudio (aac)",
+            variable=self.formato,
+            value=3,
+            font=FONTE_PADRAO,
+            command=self.reload
+        )
+        self.audio_aac.pack(pady=10)
 
         self.organizar_bool = ctk.BooleanVar(value=False)
         self.checkbox_organize = ctk.CTkCheckBox(
