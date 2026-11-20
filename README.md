@@ -1,3 +1,8 @@
+> [!NOTE]
+> **AI-Generated Content**
+>
+>  **Nota de Transparência:** A estrutura e o código deste repositório foram gerados com o auxílio de Inteligência Artificial (ex: ChatGPT, Claude, Copilot) e revisados manualmente.
+
 # YouTube Downloader (Python + Tkinter)
 
 Aplicação gráfica em Python para baixar vídeos (MP4) ou áudios (MP3) do YouTube,  
